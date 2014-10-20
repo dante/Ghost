@@ -134,20 +134,6 @@ CasperTest.begin('Post can be changed to static page', 6, function suite(test) {
     casper.thenClick('.post-settings');
 
     casper.thenClick('label[for=static-page]');
-
-    casper.waitForResource(/\/posts\/\d+\/\?include=tags/, function waitForSuccess(resource) {
-        test.assert(resource.status < 400);
-
-        test.assertExists('.post-setting-static-page:checked', 'can turn on static page');
-    });
-
-    casper.thenClick('label[for=static-page]');
-
-    casper.waitForResource(/\/posts\/\d+\/\?include=tags/, function waitForSuccess(resource) {
-        test.assert(resource.status < 400);
-
-        test.assertDoesntExist('.post-setting-static-page:checked', 'can turn off static page');
-    });
 });
 
 CasperTest.begin('Post url input is reset from all whitespace back to original value', 3, function suite(test) {
